@@ -1,5 +1,6 @@
 import { AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
+import DropDownPicker from 'react-native-dropdown-picker';
 import ProductItem from '../components/Product';
 import {
   StyleSheet,
@@ -12,7 +13,7 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
@@ -129,7 +130,17 @@ const HomeScreen = () => {
     },
   ];
   const navigation = useNavigation();
+
+  const [category, setCategory] = useState("men's clothing");
+  const [items, setItems] = useState([
+    { label: "Men's wear", value: "men's clothing" },
+    { label: 'Jewelry', value: 'jewelery' },
+    { label: 'Electronics', value: 'electronics' },
+    { label: "Women's wear", value: "women's clothing" },
+  ]);
+  const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -141,7 +152,11 @@ const HomeScreen = () => {
     };
     fetchData();
   }, []);
-  console.log(products);
+
+  const onGenderOpen = useCallback(() => {
+    setCompanyOpen(false);
+  }, []);
+
   return (
     <>
       <SafeAreaView
@@ -336,6 +351,36 @@ const HomeScreen = () => {
               </Pressable>
             ))}
           </ScrollView>
+
+          <View
+            style={{
+              marginHorizontal: 10,
+              marginTop: 20,
+              width: '45%',
+              marginBottom: open ? 50 : 15,
+            }}
+          >
+            <DropDownPicker
+              style={{
+                borderColor: '#B7B7B7',
+                height: 30,
+                marginBottom: open ? 120 : 15,
+              }}
+              open={open}
+              value={category} //genderValue
+              items={items}
+              setOpen={setOpen}
+              setValue={setCategory}
+              setItems={setItems}
+              placeholder='choose category'
+              //   placeholderStyle={styles.placeholderStyles}
+              onOpen={onGenderOpen}
+              // onChangeValue={onChange}
+              zIndex={3000}
+              zIndexInverse={1000}
+            />
+          </View>
+
           <View
             style={{
               flexDirection: 'row',
@@ -344,6 +389,7 @@ const HomeScreen = () => {
             }}
           >
             {products
+              .filter((item) => item.category === category)
               .map((item, index) => (
                 <ProductItem item={item} key={index} />
               ))}

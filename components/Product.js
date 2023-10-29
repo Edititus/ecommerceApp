@@ -20,7 +20,7 @@ const Product = ({item}) => {
           }}
         >
           <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
-            {item?.price}
+            ₦{item?.price}
           </Text>
           <Text style={{ color: '#8b0000', fontWeight: 'bold' }}>
             {item?.rating?.rate} ratings
