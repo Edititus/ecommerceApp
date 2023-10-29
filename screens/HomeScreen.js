@@ -1,26 +1,13 @@
-import { AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 import { Deals } from '../data/trendingDealsData';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ListData } from '../data/listData';
 import ProductItem from '../components/Product';
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Platform,
-  ScrollView,
-  Pressable,
-  TextInput,
-  Image,
-  FlatList,
-} from 'react-native';
 import React, { useState, useEffect, useCallback } from 'react';
 import { Searchbar, Button, Menu, Divider, Provider } from 'react-native-paper';
+import { Text, View, SafeAreaView, ScrollView, FlatList } from 'react-native';
 import TrendingDeals from '../components/TrendingDeals';
 import List from '../components/List';
-import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
   const [products, setProducts] = useState([]);
@@ -51,22 +38,33 @@ const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortType, setSortType] = useState('default');
   const [visible, setVisible] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 10;
 
   // Function to sort the products based on sortType
-  const sortProducts = () => {
-    let sortedProducts = [...products];
+ const sortProducts = () => {
+   let sortedProducts = [...products];
 
-    if (sortType === 'priceLowToHigh') {
-      sortedProducts.sort((a, b) => a.price - b.price);
-    } else if (sortType === 'priceHighToLow') {
-      sortedProducts.sort((a, b) => b.price - a.price);
-    }
+   if (sortType === 'priceLowToHigh') {
+     sortedProducts.sort((a, b) => a.price - b.price);
+   } else if (sortType === 'priceHighToLow') {
+     sortedProducts.sort((a, b) => b.price - a.price);
+   }
 
-    return sortedProducts;
+   // Calculate the starting and ending indexes of the current page
+   const startIndex = (currentPage - 1) * itemsPerPage;
+   const endIndex = startIndex + itemsPerPage;
+
+   // Return only the products for the current page
+   return sortedProducts;
+ };
+
+  const loadMoreItems = () => {
+    setCurrentPage(currentPage + 1);
   };
-  const onGenderOpen = useCallback(() => {
-    setCompanyOpen(false);
-  }, []);
+    const onGenderOpen = useCallback(() => {
+      setCompanyOpen(false);
+    }, []);
 
   return (
     <Provider>
@@ -185,6 +183,20 @@ const HomeScreen = () => {
                 <ProductItem item={item} key={index} />
               ))}
           </View>
+
+        {/* < ================== Pagination ==========> */}
+          {/* <FlatList
+              data={sortProducts().filter((item) => item.category === category)}
+              keyExtractor={(item, index) => item.id.toString()}
+              renderItem={({ item, index }) => (
+                <ProductItem item={item} key={index} />
+              )}
+            />
+          </View>
+         {sortProducts().length > currentPage * itemsPerPage && (
+            <Button title='Load More' onPress={loadMoreItems} />
+          )} */}
+          
         </ScrollView>
       </SafeAreaView>
     </Provider>

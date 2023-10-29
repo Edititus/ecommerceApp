@@ -1,18 +1,14 @@
-
 import { AntDesign } from '@expo/vector-icons';
 import {
   decrementQuantity,
   incrementQuantity,
   removeFromCart,
-} from '../cart/ProductSlice'
+} from '../cart/ProductSlice';
 import { Feather } from '@expo/vector-icons';
-import React from 'react'
+import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
-  SafeAreaView,
-  Platform,
   ScrollView,
   Pressable,
   TextInput,
@@ -21,25 +17,23 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
-
 const CartScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
 
-  
   const total = cart
     ?.map((item) => item.price * item.quantity)
     .reduce((curr, prev) => curr + prev, 0);
-    const dispatch = useDispatch();
-   const increaseQuantity = (item) => {
-     dispatch(incrementQuantity(item));
-   };
-   const decreaseQuantity = (item) => {
-     dispatch(decrementQuantity(item));
-   };
-   const deleteItem = (item) => {
-     dispatch(removeFromCart(item));
-   };
-   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const increaseQuantity = (item) => {
+    dispatch(incrementQuantity(item));
+  };
+  const decreaseQuantity = (item) => {
+    dispatch(decrementQuantity(item));
+  };
+  const deleteItem = (item) => {
+    dispatch(removeFromCart(item));
+  };
+  const navigation = useNavigation();
   return (
     <>
       <ScrollView
@@ -233,6 +227,6 @@ const CartScreen = () => {
       </ScrollView>
     </>
   );
-}
+};
 
-export default CartScreen
+export default CartScreen;
