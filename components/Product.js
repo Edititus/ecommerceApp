@@ -41,7 +41,7 @@ const Product = ({ item }) => {
       <Pressable
         onPress={() => addItemToCart(item)}
         style={{
-          backgroundColor: '#bdb76b',
+          backgroundColor: '#4b0082',
           padding: 10,
           borderRadius: 20,
           justifyContent: 'center',
@@ -52,10 +52,22 @@ const Product = ({ item }) => {
       >
         {addedToCart ? (
           <View>
-            <Text>Added to Cart</Text>
+            <Text
+              style={{
+                color: 'white',
+              }}
+            >
+              Added to Cart
+            </Text>
           </View>
         ) : (
-          <Text>Add to Cart</Text>
+          <Text
+            style={{
+              color: 'white',
+            }}
+          >
+            Add to Cart
+          </Text>
         )}
       </Pressable>
     </Pressable>

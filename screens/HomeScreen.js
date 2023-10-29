@@ -38,6 +38,7 @@ const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortType, setSortType] = useState('default');
   const [visible, setVisible] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 10;
 
@@ -77,7 +78,7 @@ const HomeScreen = () => {
               value={searchQuery}
             />
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={{ marginLeft:10 }}>Sort By: </Text>
+              <Text style={{ marginLeft: 10 }}>Sort By: </Text>
               <Menu
                 visible={visible}
                 onDismiss={() => setVisible(false)}
@@ -154,7 +155,7 @@ const HomeScreen = () => {
                 marginBottom: open ? 120 : 15,
               }}
               open={open}
-              value={category} //genderValue
+              value={category}
               items={items}
               setOpen={setOpen}
               setValue={setCategory}

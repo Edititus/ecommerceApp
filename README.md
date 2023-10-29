@@ -3,10 +3,10 @@
 # Project Setup
 
  * Environment Setup
-Install Node.js and npm.
-npx create-expo-app "application name"
-Set up Android and iOS emulator or connect a physical device.
-https://docs.expo.dev/get-started/installation/
+* Install Node.js and npm.
+* npx create-expo-app "application name"
+* Set up Android and iOS emulator or connect a physical device.
+* Vist: https://docs.expo.dev/get-started/installation/ for more information on how to set up expo cli.
 
 # Project Structure
 
@@ -61,15 +61,15 @@ State management is handled with Redux Toolkit. The app has a single reducer def
 
 # Screens and Components
 
-CartScreen.js: Displays the contents of the shopping cart.
-HomeScreen.js: The main screen for product browsing and selection.
-ProductInfoScreen.js: Provides details about a selected product.
+* CartScreen.js: Displays the contents of the shopping cart.
+* HomeScreen.js: The main screen for product browsing and selection.
+* ProductInfoScreen.js: Provides details about a selected product.
 
-Components:
+* Components:
 
-List.js: Renders a list of items.
-Product.js: Displays a product.
-TrendingDeals.js: Component for displaying trending deals.
+* List.js: Renders a list of items.
+* Product.js: Displays a product.
+* TrendingDeals.js: Component for displaying trending deals.
 
 # API Integration
 The app fetches product data from the FakeStore API using Axios. The data is used to populate product listings.
@@ -86,7 +86,10 @@ To run the project locally, follow these steps:
      yarn 
      yarn expo start
 
+# Application Screenshots
 
-     ![Homescreen](assets/homescreen.png)
-     ![Productdetails](assets/productdetails.png)
-     ![Cart](assets/cart.png)
+     ![Homescreen]<img width="394" alt="cart" src="https://github.com/Edititus/ecommerceApp/assets/116601338/c79a1eee-b0ab-4781-bfdb-ea548f4981ab">
+
+     ![Productdetails]<img width="395" alt="product" src="https://github.com/Edititus/ecommerceApp/assets/116601338/8d736af1-0c61-480e-8e2b-a97b37c5f590">
+
+     ![Cart]<img width="394" alt="cart" src="https://github.com/Edititus/ecommerceApp/assets/116601338/4942d566-9d79-492d-9ff8-3351a96d3e19">

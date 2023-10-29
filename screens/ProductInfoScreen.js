@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 const ProductInfoScreen = () => {
+ 
   const route = useRoute();
   const { width } = Dimensions.get('window');
   const navigation = useNavigation();
@@ -45,7 +46,7 @@ const ProductInfoScreen = () => {
     >
       <View
         style={{
-          backgroundColor: '#faebd7',
+          backgroundColor: '#e6e6fa',
           padding: 10,
           flexDirection: 'row',
           alignItems: 'center',
@@ -91,7 +92,6 @@ const ProductInfoScreen = () => {
           </ImageBackground>
         ))}
       </ScrollView>
-
       <View style={{ padding: 10 }}>
         <Text style={{ fontSize: 15, fontWeight: '500' }}>
           {route?.params?.title}
@@ -133,7 +133,8 @@ const ProductInfoScreen = () => {
       <Pressable
         onPress={() => addItemToCart(route?.params?.item)}
         style={{
-          backgroundColor: '#FFC72C',
+          backgroundColor: '#4b0082',
+          color: 'white',
           padding: 10,
           borderRadius: 20,
           justifyContent: 'center',
@@ -144,16 +145,28 @@ const ProductInfoScreen = () => {
       >
         {addedToCart ? (
           <View>
-            <Text>Added to Cart</Text>
+            <Text
+              style={{
+                color: 'white',
+              }}
+            >
+              Added to Cart
+            </Text>
           </View>
         ) : (
-          <Text>Add to Cart</Text>
+          <Text
+            style={{
+              color: 'white',
+            }}
+          >
+            Add to Cart
+          </Text>
         )}
       </Pressable>
 
       <Pressable
         style={{
-          backgroundColor: '#bdb76b',
+          backgroundColor: '#4b0082',
           padding: 10,
           borderRadius: 20,
           justifyContent: 'center',
@@ -162,7 +175,13 @@ const ProductInfoScreen = () => {
           marginVertical: 10,
         }}
       >
-        <Text>Buy Now</Text>
+        <Text
+          style={{
+            color: 'white',
+          }}
+        >
+          Buy Now
+        </Text>
       </Pressable>
     </ScrollView>
   );
@@ -171,3 +190,5 @@ const ProductInfoScreen = () => {
 export default ProductInfoScreen;
 
 const styles = StyleSheet.create({});
+
+

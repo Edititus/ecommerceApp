@@ -11,7 +11,6 @@ import {
   View,
   ScrollView,
   Pressable,
-  TextInput,
   Image,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +22,8 @@ const CartScreen = () => {
   const total = cart
     ?.map((item) => item.price * item.quantity)
     .reduce((curr, prev) => curr + prev, 0);
+  const finalTotal = total.toFixed(2);
+
   const dispatch = useDispatch();
   const increaseQuantity = (item) => {
     dispatch(incrementQuantity(item));
@@ -178,7 +179,7 @@ const CartScreen = () => {
           style={{ padding: 10, flexDirection: 'row', alignItems: 'center' }}
         >
           <Text style={{ fontSize: 18, fontWeight: '400' }}>Total : </Text>
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}> ₦{total}</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold' }}> ₦{finalTotal}</Text>
         </View>
 
         <Pressable
