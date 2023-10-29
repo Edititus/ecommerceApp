@@ -180,7 +180,8 @@ const HomeScreen = () => {
   ]);
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
-
+    const [modalVisible, setModalVisible] = useState(false);
+    
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -372,7 +373,7 @@ const HomeScreen = () => {
               ))}
           </View>
         </ScrollView>
-      </SafeAreaView>
+          </SafeAreaView>
     </>
   );
 };

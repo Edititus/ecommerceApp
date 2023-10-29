@@ -1,3 +1,7 @@
+import { addToCart } from '../cart/ProductSlice';
+import { AntDesign, Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   StyleSheet,
   Text,
@@ -8,31 +12,32 @@ import {
   ImageBackground,
   Dimensions,
 } from 'react-native';
-import React, { useState } from 'react';
-import { AntDesign, Feather } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../cart/ProductSlice';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const ProductInfoScreen = () => {
   const route = useRoute();
   const { width } = Dimensions.get('window');
   const navigation = useNavigation();
-    const height = (width * 100) / 100;
-     const [addedToCart, setAddedToCart] = useState(false);
-    const dispatch = useDispatch();
-     const addItemToCart = (item) => {
-       setAddedToCart(true);
-       dispatch(addToCart(item));
-       setTimeout(() => {
-         setAddedToCart(false);
-       }, 60000);
-     };
-    
-    const cart = useSelector((state) => state.cart.cart);
-    console.log(cart);
+  const height = (width * 100) / 100;
+  const [addedToCart, setAddedToCart] = useState(false);
+  const dispatch = useDispatch();
+  const addItemToCart = (item) => {
+    setAddedToCart(true);
+    dispatch(addToCart(item));
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 60000);
+  };
+
+  const cart = useSelector((state) => state.cart.cart);
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace('Main');
+    }, 2000);
+  }, []);
   return (
     <ScrollView
       style={{ marginTop: 55, flex: 1, backgroundColor: 'white' }}
@@ -125,7 +130,7 @@ const ProductInfoScreen = () => {
         IN Stock
       </Text>
 
-       <Pressable
+      <Pressable
         onPress={() => addItemToCart(route?.params?.item)}
         style={{
           backgroundColor: '#FFC72C',
@@ -143,8 +148,8 @@ const ProductInfoScreen = () => {
           </View>
         ) : (
           <Text>Add to Cart</Text>
-         )} 
-      </Pressable> 
+        )}
+      </Pressable>
 
       <Pressable
         style={{
