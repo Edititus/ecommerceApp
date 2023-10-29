@@ -1,12 +1,10 @@
-import { addToCart } from '../cart/ProductSlice';
+import { addToCart } from '../reduxStore/ProductSlice';
 import { Pressable, StyleSheet, Text, View, Image } from 'react-native';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 const Product = ({ item }) => {
   const [addedToCart, setAddedToCart] = useState(false);
-  
-
 
   const dispatch = useDispatch();
 
@@ -18,7 +16,7 @@ const Product = ({ item }) => {
     }, 60000);
   };
 
-  return(
+  return (
     <Pressable style={{ marginHorizontal: 20, marginVertical: 25 }}>
       <Image
         style={{ width: 150, height: 150, resizeMode: 'contain' }}

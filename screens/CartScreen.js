@@ -3,7 +3,7 @@ import {
   decrementQuantity,
   incrementQuantity,
   removeFromCart,
-} from '../cart/ProductSlice';
+} from '../reduxStore/ProductSlice';
 import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import {
@@ -40,35 +40,6 @@ const CartScreen = () => {
         style={{ marginTop: 55, flex: 1, backgroundColor: 'white' }}
         showsVerticalScrollIndicator={false}
       >
-        <View
-          style={{
-            backgroundColor: '#faebd7',
-            padding: 10,
-            flexDirection: 'row',
-            alignItems: 'center',
-          }}
-        >
-          <Pressable
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginHorizontal: 7,
-              gap: 10,
-              backgroundColor: 'white',
-              borderRadius: 3,
-              height: 38,
-              flex: 1,
-            }}
-          >
-            <AntDesign
-              style={{ paddingLeft: 10 }}
-              name='search1'
-              size={22}
-              color='black'
-            />
-            <TextInput placeholder='Search products' />
-          </Pressable>
-        </View>
 
         <View style={{ marginHorizontal: 10 }}>
           {cart?.map((item, index) => (
@@ -105,7 +76,7 @@ const CartScreen = () => {
                   <Text
                     style={{ fontSize: 20, fontWeight: 'bold', marginTop: 6 }}
                   >
-                    {item?.price}
+                    ₦{item?.price}
                   </Text>
                   <Text style={{ color: 'green' }}>In Stock</Text>
                 </View>
@@ -207,7 +178,7 @@ const CartScreen = () => {
           style={{ padding: 10, flexDirection: 'row', alignItems: 'center' }}
         >
           <Text style={{ fontSize: 18, fontWeight: '400' }}>Total : </Text>
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{total}</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold' }}> ₦{total}</Text>
         </View>
 
         <Pressable

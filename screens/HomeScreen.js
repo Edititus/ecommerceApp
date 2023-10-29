@@ -42,29 +42,29 @@ const HomeScreen = () => {
   const itemsPerPage = 10;
 
   // Function to sort the products based on sortType
- const sortProducts = () => {
-   let sortedProducts = [...products];
+  const sortProducts = () => {
+    let sortedProducts = [...products];
 
-   if (sortType === 'priceLowToHigh') {
-     sortedProducts.sort((a, b) => a.price - b.price);
-   } else if (sortType === 'priceHighToLow') {
-     sortedProducts.sort((a, b) => b.price - a.price);
-   }
+    if (sortType === 'priceLowToHigh') {
+      sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (sortType === 'priceHighToLow') {
+      sortedProducts.sort((a, b) => b.price - a.price);
+    }
 
-   // Calculate the starting and ending indexes of the current page
-   const startIndex = (currentPage - 1) * itemsPerPage;
-   const endIndex = startIndex + itemsPerPage;
+    // Calculate the starting and ending indexes of the current page
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
-   // Return only the products for the current page
-   return sortedProducts;
- };
+    // Return only the products for the current page
+    return sortedProducts;
+  };
 
   const loadMoreItems = () => {
     setCurrentPage(currentPage + 1);
   };
-    const onGenderOpen = useCallback(() => {
-      setCompanyOpen(false);
-    }, []);
+  const onGenderOpen = useCallback(() => {
+    setCompanyOpen(false);
+  }, []);
 
   return (
     <Provider>
@@ -75,26 +75,21 @@ const HomeScreen = () => {
               placeholder='Search'
               onChangeText={(query) => setSearchQuery(query)}
               value={searchQuery}
-              Style={{
-                textColor: 'black',
-                backgroundColor: 'black', // Background color of the input field
-                // You can add more styles here
-              }}
             />
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text>Sort By: </Text>
+              <Text style={{ marginLeft:10 }}>Sort By: </Text>
               <Menu
                 visible={visible}
                 onDismiss={() => setVisible(false)}
                 anchor={
                   <Button onPress={() => setVisible(true)}>
                     {sortType === 'default'
-                      ? 'Default'
+                      ? 'All'
                       : sortType === 'priceLowToHigh'
-                      ? 'Price Low to High'
+                      ? 'Price: Lowest to Highest'
                       : sortType === 'priceHighToLow'
-                      ? 'Price High to Low'
-                      : 'Default'}
+                      ? 'Price: Highest to Lowest'
+                      : 'All'}
                   </Button>
                 }
               >
@@ -103,7 +98,7 @@ const HomeScreen = () => {
                     setSortType('default');
                     setVisible(false);
                   }}
-                  title='Default'
+                  title='All'
                 />
                 <Divider />
                 <Menu.Item
@@ -111,7 +106,7 @@ const HomeScreen = () => {
                     setSortType('priceLowToHigh');
                     setVisible(false);
                   }}
-                  title='Price Low to High'
+                  title='Price: Lowest to Highest'
                 />
                 <Divider />
                 <Menu.Item
@@ -119,7 +114,7 @@ const HomeScreen = () => {
                     setSortType('priceHighToLow');
                     setVisible(false);
                   }}
-                  title='Price High to Low'
+                  title='Price: Highest to Lowest'
                 />
               </Menu>
             </View>
@@ -174,7 +169,6 @@ const HomeScreen = () => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              flexWrap: 'wrap',
             }}
           >
             {sortProducts()
@@ -184,7 +178,7 @@ const HomeScreen = () => {
               ))}
           </View>
 
-        {/* < ================== Pagination ==========> */}
+          {/* < ================== Pagination ==========> */}
           {/* <FlatList
               data={sortProducts().filter((item) => item.category === category)}
               keyExtractor={(item, index) => item.id.toString()}
@@ -196,7 +190,6 @@ const HomeScreen = () => {
          {sortProducts().length > currentPage * itemsPerPage && (
             <Button title='Load More' onPress={loadMoreItems} />
           )} */}
-          
         </ScrollView>
       </SafeAreaView>
     </Provider>

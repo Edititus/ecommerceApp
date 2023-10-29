@@ -1,4 +1,4 @@
-import { addToCart } from '../cart/ProductSlice';
+import { addToCart } from '../reduxStore/ProductSlice';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';

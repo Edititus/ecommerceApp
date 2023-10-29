@@ -1,7 +1,7 @@
 // import { StatusBar } from 'expo-status-bar';
 import { Provider } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
-import store from './cart/store';
+import store from './reduxStore/store';
 import StackNavigator from './navigation/StackNavigator';
 
 
