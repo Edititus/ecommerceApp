@@ -52,38 +52,58 @@ const HomeScreen = () => {
     {
       id: '1',
       title: 'Insulated Jacket',
-      oldPrice: 'N25,000',
-      price: ' N19,000',
+      oldPrice: 25000,
+      price: 19000,
       image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/CD874MGR.jpg',
       color: 'Grey',
       size: 'S-XXL',
+      carouselImages: [
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/CD874MGR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/CD874MGR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/CD874MGR.jpg',
+      ],
     },
     {
       id: '2',
       title: 'Boots',
-      oldPrice: 'N30,000',
-      price: ' N15,000',
+      oldPrice: 30000,
+      price: 15000,
       image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FV02BGY.jpg',
       color: 'Black',
       size: '8-10',
+      carouselImages: [
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FV02BGY.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FV02BGY.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FV02BGY.jpg',
+      ],
     },
     {
       id: '3',
       title: 'Yellow-Reflective Hoodie ',
-      oldPrice: 'N12,999',
-      price: 'N10,999',
+      oldPrice: 12999,
+      price: 10999,
       image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/DX482YBR.jpg',
       color: 'Reflective',
       size: 'S-XXL',
+      carouselImages: [
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/DX482YBR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/DX482YBR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/DX482YBR.jpg',
+      ],
     },
     {
       id: '4',
       title: 'Wrist Support Strap',
-      oldPrice: 'N15000',
-      price: ' N10,000',
+      oldPrice: 15000,
+      price: 10000,
       image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW83BKR.jpg',
       color: 'Black',
       size: '6-8',
+      carouselImages: [
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW83BKR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW83BKR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW83BKR.jpg',
+      ],
     },
   ];
 
@@ -97,6 +117,11 @@ const HomeScreen = () => {
       image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FW46BKR.jpg',
       color: 'Black',
       size: '40-44',
+      carouselImages: [
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FW46BKR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FW46BKR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FW46BKR.jpg',
+      ],
     },
     {
       id: '1',
@@ -107,6 +132,11 @@ const HomeScreen = () => {
       image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW89NAR.jpg',
       color: 'black',
       size: 'Normal',
+      carouselImages: [
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW89NAR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW89NAR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW89NAR.jpg',
+      ],
     },
     {
       id: '2',
@@ -117,6 +147,11 @@ const HomeScreen = () => {
       image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/B955YER.jpg',
       color: 'yellow',
       size: 'Normal',
+      carouselImages: [
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/B955YER.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/B955YER.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/B955YER.jpg',
+      ],
     },
     {
       id: '3',
@@ -127,6 +162,11 @@ const HomeScreen = () => {
       image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/A751BKR.jpg',
       color: 'Black',
       size: '6-9',
+      carouselImages: [
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/A751BKR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/A751BKR.jpg',
+        'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/A751BKR.jpg',
+      ],
     },
   ];
   const navigation = useNavigation();
@@ -156,7 +196,8 @@ const HomeScreen = () => {
   const onGenderOpen = useCallback(() => {
     setCompanyOpen(false);
   }, []);
-
+    
+//   const cart = useSelector((state) => state.cart.cart);
   return (
     <>
       <SafeAreaView
@@ -227,13 +268,7 @@ const HomeScreen = () => {
           <Text style={{ padding: 10, fontSize: 18, fontWeight: 'bold' }}>
             Trending Deals of the week
           </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-            }}
-          >
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {deals.map((item, index) => (
               <Pressable
                 key={index}
@@ -284,7 +319,7 @@ const HomeScreen = () => {
                 </Text>
               </Pressable>
             ))}
-          </View>
+          </ScrollView>
 
           <Text
             style={{
@@ -294,64 +329,6 @@ const HomeScreen = () => {
               marginTop: 15,
             }}
           />
-
-          <Text style={{ padding: 10, fontSize: 18, fontWeight: 'bold' }}>
-            Today's Deals
-          </Text>
-
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {offers.map((item, index) => (
-              <Pressable
-                key={index}
-                onPress={() =>
-                  navigation.navigate('Info', {
-                    id: item.id,
-                    title: item.title,
-                    price: item?.price,
-                    carouselImages: item.carouselImages,
-                    color: item?.color,
-                    size: item?.size,
-                    oldPrice: item?.oldPrice,
-                    item: item,
-                  })
-                }
-                style={{
-                  marginVertical: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Image
-                  style={{ width: 150, height: 150, resizeMode: 'contain' }}
-                  source={{ uri: item?.image }}
-                />
-
-                <View
-                  style={{
-                    backgroundColor: '#E31837',
-                    paddingVertical: 5,
-                    width: 130,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginTop: 10,
-                    borderRadius: 4,
-                  }}
-                >
-                  <Text
-                    style={{
-                      textAlign: 'center',
-                      color: 'white',
-                      fontSize: 13,
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Upto {item?.offer}
-                  </Text>
-                </View>
-              </Pressable>
-            ))}
-          </ScrollView>
-
           <View
             style={{
               marginHorizontal: 10,
@@ -401,27 +378,3 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-// const styles = StyleSheet.create({
-//   itemText: {
-//     textAlign: 'center',
-//     fontSize: 9,
-//     marginVertical: 5,
-//     fontWeight: '700',
-//   },
-//   itemColor: {
-//     textAlign: 'center',
-//     fontSize: 9,
-//     marginVertical: 5,
-//     fontWeight: '700',
-//       textDecorationLine: 'line-through',
-//     color:'red'
-//   },
-// });
-{
-  /* <Text style={styles.itemText}>{item?.title}</Text>
-                  <Text style={styles.itemText}>{item?.color}</Text>
-                  <Text style={styles.itemText}>Size: {item?.size}</Text>
-                  <Text style={styles.itemColor}>Before: {item?.oldPrice}</Text>
-                  <Text style={styles.itemText}>Now: {item?.price}</Text> */
-}
