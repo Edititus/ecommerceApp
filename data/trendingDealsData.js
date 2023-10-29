@@ -1,0 +1,58 @@
+export const Deals = [
+  {
+    id: '1',
+    title: 'Insulated Jacket',
+    oldPrice: 25000,
+    price: 19000,
+    image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/CD874MGR.jpg',
+    color: 'Grey',
+    size: 'S-XXL',
+    carouselImages: [
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/CD874MGR.jpg',
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/CD874MGR.jpg',
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/CD874MGR.jpg',
+    ],
+  },
+  {
+    id: '2',
+    title: 'Boots',
+    oldPrice: 30000,
+    price: 15000,
+    image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FV02BGY.jpg',
+    color: 'Black',
+    size: '8-10',
+    carouselImages: [
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FV02BGY.jpg',
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FV02BGY.jpg',
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/FV02BGY.jpg',
+    ],
+  },
+  {
+    id: '3',
+    title: 'Yellow-Reflective Hoodie ',
+    oldPrice: 12999,
+    price: 10999,
+    image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/DX482YBR.jpg',
+    color: 'Reflective',
+    size: 'S-XXL',
+    carouselImages: [
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/DX482YBR.jpg',
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/DX482YBR.jpg',
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/DX482YBR.jpg',
+    ],
+  },
+  {
+    id: '4',
+    title: 'Wrist Support Strap',
+    oldPrice: 15000,
+    price: 10000,
+    image: 'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW83BKR.jpg',
+    color: 'Black',
+    size: '6-8',
+    carouselImages: [
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW83BKR.jpg',
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW83BKR.jpg',
+      'https://d11ak7fd9ypfb7.cloudfront.net/styles400px/PW83BKR.jpg',
+    ],
+  },
+];

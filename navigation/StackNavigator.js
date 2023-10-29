@@ -5,10 +5,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Entypo } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
-import OrderScreen from '../screens/OrderScreen';
 import ProductInfoScreen from '../screens/ProductInfoScreen';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -60,12 +59,6 @@ const StackNavigator = () => {
         <Stack.Screen
           name='Info'
           component={ProductInfoScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name='Order'
-          component={OrderScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
