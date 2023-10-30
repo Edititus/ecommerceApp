@@ -2,12 +2,16 @@ import { addToCart } from '../reduxStore/ProductSlice';
 import { Pressable, StyleSheet, Text, View, Image } from 'react-native';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 const Product = ({ item }) => {
+
   const [addedToCart, setAddedToCart] = useState(false);
-
+  const navigation = useNavigation();
   const dispatch = useDispatch();
-
+  const productDetails = () => {
+    navigation.navigate('productDetails',{item});
+  }
   const addItemToCart = (item) => {
     setAddedToCart(true);
     dispatch(addToCart(item));
@@ -16,8 +20,12 @@ const Product = ({ item }) => {
     }, 60000);
   };
 
+
   return (
-    <Pressable style={{ marginHorizontal: 20, marginVertical: 25 }}>
+    <Pressable
+      onPress={productDetails}
+      style={{ marginHorizontal: 20, marginVertical: 25 }}
+    >
       <Image
         style={{ width: 150, height: 150, resizeMode: 'contain' }}
         source={{ uri: item?.image }}

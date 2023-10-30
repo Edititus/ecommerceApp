@@ -2,12 +2,12 @@ import axios from 'axios';
 import { Deals } from '../data/trendingDealsData';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ListData } from '../data/listData';
+import List from '../components/List';
 import ProductItem from '../components/Product';
 import React, { useState, useEffect, useCallback } from 'react';
 import { Searchbar, Button, Menu, Divider, Provider } from 'react-native-paper';
-import { Text, View, SafeAreaView, ScrollView, FlatList } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView } from 'react-native';
 import TrendingDeals from '../components/TrendingDeals';
-import List from '../components/List';
 
 const HomeScreen = () => {
   const [products, setProducts] = useState([]);
@@ -39,30 +39,24 @@ const HomeScreen = () => {
   const [sortType, setSortType] = useState('default');
   const [visible, setVisible] = useState(false);
   const [companyOpen, setCompanyOpen] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 10;
 
-  // Function to sort the products based on sortType
+  const filterData = () => {
+    return products.filter((item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  };
+
   const sortProducts = () => {
-    let sortedProducts = [...products];
+    let sortedProducts = [...filterData()];
 
     if (sortType === 'priceLowToHigh') {
       sortedProducts.sort((a, b) => a.price - b.price);
     } else if (sortType === 'priceHighToLow') {
       sortedProducts.sort((a, b) => b.price - a.price);
     }
-
-    // Calculate the starting and ending indexes of the current page
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-
-    // Return only the products for the current page
     return sortedProducts;
   };
 
-  const loadMoreItems = () => {
-    setCurrentPage(currentPage + 1);
-  };
   const onGenderOpen = useCallback(() => {
     setCompanyOpen(false);
   }, []);
@@ -178,19 +172,6 @@ const HomeScreen = () => {
                 <ProductItem item={item} key={index} />
               ))}
           </View>
-
-          {/* < ================== Pagination ==========> */}
-          {/* <FlatList
-              data={sortProducts().filter((item) => item.category === category)}
-              keyExtractor={(item, index) => item.id.toString()}
-              renderItem={({ item, index }) => (
-                <ProductItem item={item} key={index} />
-              )}
-            />
-          </View>
-         {sortProducts().length > currentPage * itemsPerPage && (
-            <Button title='Load More' onPress={loadMoreItems} />
-          )} */}
         </ScrollView>
       </SafeAreaView>
     </Provider>

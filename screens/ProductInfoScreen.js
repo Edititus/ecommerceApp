@@ -17,7 +17,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 const ProductInfoScreen = () => {
- 
   const route = useRoute();
   const { width } = Dimensions.get('window');
   const navigation = useNavigation();
@@ -34,11 +33,6 @@ const ProductInfoScreen = () => {
 
   const cart = useSelector((state) => state.cart.cart);
 
-  useEffect(() => {
-    setTimeout(() => {
-      navigation.replace('Main');
-    }, 2000);
-  }, []);
   return (
     <ScrollView
       style={{ marginTop: 55, flex: 1, backgroundColor: 'white' }}
@@ -190,5 +184,3 @@ const ProductInfoScreen = () => {
 export default ProductInfoScreen;
 
 const styles = StyleSheet.create({});
-
-
