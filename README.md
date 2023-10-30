@@ -64,6 +64,7 @@ State management is handled with Redux Toolkit. The app has a single reducer def
 * CartScreen.js: Displays the contents of the shopping cart.
 * HomeScreen.js: The main screen for product browsing and selection.
 * ProductInfoScreen.js: Provides details about a selected product.
+* ProductDetails.js: Provides details about a selected product.
 
 * Components:
 

@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Entypo } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import ProductDetails from '../screens/ProductDetails';
 import ProductInfoScreen from '../screens/ProductInfoScreen';
 import React from 'react';
 import { StyleSheet } from 'react-native';
@@ -59,7 +60,12 @@ const StackNavigator = () => {
         <Stack.Screen
           name='Info'
           component={ProductInfoScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='productDetails'
+          component={ProductDetails}
+          options={{ headerShown: true}}
         />
       </Stack.Navigator>
     </NavigationContainer>

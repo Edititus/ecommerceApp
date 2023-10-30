@@ -1,24 +1,21 @@
 import { addToCart } from '../reduxStore/ProductSlice';
-
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
   Pressable,
   ImageBackground,
   Dimensions,
 } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
-const ProductInfoScreen = () => {
-  const route = useRoute();
+const ProductDetails = ({ route }) => {
   const { width } = Dimensions.get('window');
-  const navigation = useNavigation();
   const height = (width * 100) / 100;
   const [addedToCart, setAddedToCart] = useState(false);
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const addItemToCart = (item) => {
     setAddedToCart(true);
@@ -28,63 +25,38 @@ const ProductInfoScreen = () => {
     }, 60000);
   };
 
-  const cart = useSelector((state) => state.cart.cart);
+  const { item } = route.params;
 
   return (
-    <ScrollView
-      style={{ marginTop: 0, flex: 1, backgroundColor: 'white' }}
-      showsVerticalScrollIndicator={false}
-    >
-
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {route.params.carouselImages.map((item, index) => (
-          <ImageBackground
-            style={{ width, height, marginTop: 25, resizeMode: 'contain' }}
-            source={{ uri: item }}
-            key={index}
-          >
-            <View
-              style={{
-                padding: 20,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            ></View>
-          </ImageBackground>
-        ))}
-      </ScrollView>
+    <>
+      <ImageBackground
+        style={{ width, height, marginTop: 2, resizeMode: 'contain' }}
+        source={{ uri: item.image }}
+      >
+        <View
+          style={{
+            padding: 20,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        ></View>
+      </ImageBackground>
       <View style={{ padding: 10 }}>
-        <Text style={{ fontSize: 15, fontWeight: '500' }}>
-          {route?.params?.title}
-        </Text>
+        <Text style={{ fontSize: 15, fontWeight: '500' }}>{item.title}</Text>
 
         <Text style={{ fontSize: 18, fontWeight: '600', marginTop: 6 }}>
-          ₦{route?.params?.price}
+          ₦{item.price}
         </Text>
       </View>
 
       <Text style={{ height: 1, borderColor: '#D0D0D0', borderWidth: 1 }} />
-
-      <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10 }}>
-        <Text>Color: </Text>
-        <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
-          {route?.params?.color}
-        </Text>
-      </View>
-
-      <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10 }}>
-        <Text>Size: </Text>
-        <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
-          {route?.params?.size}
-        </Text>
-      </View>
 
       <Text style={{ height: 1, borderColor: '#D0D0D0', borderWidth: 1 }} />
 
       <View style={{ padding: 10 }}>
         <Text style={{ fontSize: 15, fontWeight: 'bold', marginVertical: 5 }}>
-          Total : ₦{route.params.price}
+          Total : ₦{item.price}
         </Text>
       </View>
 
@@ -145,10 +117,10 @@ const ProductInfoScreen = () => {
           Buy Now
         </Text>
       </Pressable>
-    </ScrollView>
+    </>
   );
 };
 
-export default ProductInfoScreen;
+export default ProductDetails;
 
 const styles = StyleSheet.create({});
