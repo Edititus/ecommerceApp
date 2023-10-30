@@ -1,10 +1,19 @@
 import { addToCart } from '../reduxStore/ProductSlice';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  ImageBackground,
+  Dimensions,
+} from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 const ProductDetails = ({ route }) => {
+  const { width } = Dimensions.get('window');
+  const height = (width * 100) / 100;
   const [addedToCart, setAddedToCart] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -20,23 +29,19 @@ const ProductDetails = ({ route }) => {
   console.log(item);
   return (
     <>
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: 30,
-        }}
+      <ImageBackground
+        style={{ width, height, marginTop: 2, resizeMode: 'contain' }}
+        source={{ uri: item.image }}
       >
-        <Image
+        <View
           style={{
-            width: 200,
-            height: 200,
-            resizeMode: 'contain',
-            marginHorizontal: 20,
+            padding: 20,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}
-          source={{ uri: item.image }}
-        />
-      </View>
+        ></View>
+      </ImageBackground>
       <View style={{ padding: 10 }}>
         <Text style={{ fontSize: 15, fontWeight: '500' }}>{item.title}</Text>
 
@@ -46,11 +51,6 @@ const ProductDetails = ({ route }) => {
       </View>
 
       <Text style={{ height: 1, borderColor: '#D0D0D0', borderWidth: 1 }} />
-
-      <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10 }}>
-        <Text>Color: </Text>
-        <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{item.color}</Text>
-      </View>
 
       <Text style={{ height: 1, borderColor: '#D0D0D0', borderWidth: 1 }} />
 

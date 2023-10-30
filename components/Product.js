@@ -5,13 +5,12 @@ import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 const Product = ({ item }) => {
-
   const [addedToCart, setAddedToCart] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const productDetails = () => {
-    navigation.navigate('productDetails',{item});
-  }
+    navigation.navigate('productDetails', { item });
+  };
   const addItemToCart = (item) => {
     setAddedToCart(true);
     dispatch(addToCart(item));
@@ -19,7 +18,6 @@ const Product = ({ item }) => {
       setAddedToCart(false);
     }, 60000);
   };
-
 
   return (
     <Pressable

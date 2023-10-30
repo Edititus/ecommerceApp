@@ -1,14 +1,11 @@
 import { addToCart } from '../reduxStore/ProductSlice';
-import { AntDesign, Feather } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import {
   StyleSheet,
   Text,
   View,
   ScrollView,
   Pressable,
-  TextInput,
   ImageBackground,
   Dimensions,
 } from 'react-native';
@@ -35,38 +32,9 @@ const ProductInfoScreen = () => {
 
   return (
     <ScrollView
-      style={{ marginTop: 55, flex: 1, backgroundColor: 'white' }}
+      style={{ marginTop: 0, flex: 1, backgroundColor: 'white' }}
       showsVerticalScrollIndicator={false}
     >
-      <View
-        style={{
-          backgroundColor: '#e6e6fa',
-          padding: 10,
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}
-      >
-        <Pressable
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginHorizontal: 7,
-            gap: 10,
-            backgroundColor: 'white',
-            borderRadius: 3,
-            height: 38,
-            flex: 1,
-          }}
-        >
-          <AntDesign
-            style={{ paddingLeft: 10 }}
-            name='search1'
-            size={22}
-            color='black'
-          />
-          <TextInput placeholder='Search products' />
-        </Pressable>
-      </View>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {route.params.carouselImages.map((item, index) => (
