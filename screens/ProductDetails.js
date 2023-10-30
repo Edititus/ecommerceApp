@@ -26,7 +26,7 @@ const ProductDetails = ({ route }) => {
   };
 
   const { item } = route.params;
-  console.log(item);
+
   return (
     <>
       <ImageBackground

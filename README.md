@@ -88,9 +88,6 @@ To run the project locally, follow these steps:
      yarn expo start
 
 # Application Screenshots
-
-     ![Homescreen]<img width="394" alt="cart" src="https://github.com/Edititus/ecommerceApp/assets/116601338/c79a1eee-b0ab-4781-bfdb-ea548f4981ab">
-
-     ![Productdetails]<img width="395" alt="product" src="https://github.com/Edititus/ecommerceApp/assets/116601338/8d736af1-0c61-480e-8e2b-a97b37c5f590">
-
-     ![Cart]<img width="394" alt="cart" src="https://github.com/Edititus/ecommerceApp/assets/116601338/4942d566-9d79-492d-9ff8-3351a96d3e19">
+<img width="394" alt="cart" src="https://github.com/Edititus/ecommerceApp/assets/116601338/c19a65cc-62a0-4148-8e2b-6d89bc6f1ab2">
+<img width="395" alt="product" src="https://github.com/Edititus/ecommerceApp/assets/116601338/ad8ad3ae-3c4f-4d7d-9a58-3cbc11e2ee2e">
+<img width="411" alt="home-screen" src="https://github.com/Edititus/ecommerceApp/assets/116601338/f4e668c5-8121-4d70-ab0f-784d1658c981">
